@@ -72,5 +72,8 @@ lldb> gui
 ## clang-format
 ```
 clang-format -i some.cpp
+
+// or using FZF
+clang-format -i src/~~
 ```
 
