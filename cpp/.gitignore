@@ -33,5 +33,5 @@
 
 
 
-test.*/
-src/test
+main.*/
+**/main

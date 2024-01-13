@@ -6,19 +6,33 @@
 
 ```shell
 cd src
-clang++ -std=c++17 -g -o test n26-remove-duplicates-from-sorted-array.cpp
-./test
+clang++ -std=c++17 -g -o -O0 -Wall main n26-remove-duplicates-from-sorted-array.cpp
+./main
 ```
 
 
 ## how to debug using lldb
 
 ```shell
-lldb test
+lldb main
 
+
+# break at start
 lldb> process launch -s
+
+# run target
+lldb> run
+
 # set a breakpoint
-lldb> break main
+lldb> b main
+
+# list breakpoints
+lldb> breakpoint list
+
+# add auto command to breakpoint
+lldb> breakpoint command add 1.1
+
+
 # continue 
 lldb> c
 # next line
@@ -27,12 +41,26 @@ lldb> n
 lldb> i
 # print current source
 lldb> f
+
 # p
 lldb> p <variable_name>
+lldb> p/x <variable_name>
+
+# inspect all variables in current frame
+lldb> v
+
+# run until reach line no.
+lldb> thread until 113
+
+# call stack 
+lldb> bt
+
+# select frame
+lldb> frame select 1
+
 
 # gui
 lldb> gui
-
 
 
 ```
@@ -41,4 +69,8 @@ lldb> gui
 
 
 
+## clang-format
+```
+clang-format -i some.cpp
+```
 
