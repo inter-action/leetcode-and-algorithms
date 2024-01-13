@@ -1,5 +1,6 @@
 #include <iostream>
 
+// the key is to swap duplicated value with unique one.
 class Solution {
 public:
   int removeDuplicates(std::vector<int> &nums) {
@@ -13,8 +14,7 @@ public:
     it++;
     auto removed = 0;
     for (; it != ends; it++) {
-      std::cout << "it: " << *it << " last: " << last << std::endl;
-      if (*it == last) {
+      if (*it == last) { // repeat with previous value
         removed++;
         continue;
       } else {

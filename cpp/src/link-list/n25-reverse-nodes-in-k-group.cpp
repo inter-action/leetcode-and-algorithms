@@ -89,6 +89,11 @@ public:
       }
 
       // should refactor this to a common lambda
+
+      // return: head/tail of revsesed nodes
+      // auto revserse_until = [](ListNode* head, std::fun<bool(ListNode*)>) -> std::pair<ListNode*, ListNode*> {...}
+
+      // too lazy too do that. next time
       // revese back remaining nodes
       cur = rev_cur;
       ListNode* rev_cur_dup = nullptr;
