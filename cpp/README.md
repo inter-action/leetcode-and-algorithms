@@ -77,3 +77,15 @@ clang-format -i some.cpp
 clang-format -i src/~~
 ```
 
+
+## contents
+
+
+```
+* 差分数组
+    * src/n1109-corporate-flight-bookings.cpp
+```
+
+
+## failed items
+* #5, https://leetcode.cn/problems/longest-palindromic-substring/description/

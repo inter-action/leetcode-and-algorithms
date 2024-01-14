@@ -1,12 +1,27 @@
-
-#include <iostream>
-#include <string_view>
-#include <unordered_map>
-
-// !! THIS code would not work.
+// !! THIS code does not work.
 // pls check the official solution - https://leetcode.cn/problems/longest-palindromic-substring/solutions/255195/zui-chang-hui-wen-zi-chuan-by-leetcode-solution
 
-// the fucking less is I should do the palindrome check using center position of the string and expand it outwards
+
+// 在 s 中寻找以 s[l] 和 s[r] 为中心的最长回文串
+// var palindrome = function(s, l, r) {
+//     // 防止索引越界
+//     while (l >= 0 && r < s.length
+//             && s.charAt(l) == s.charAt(r)) {
+//         // 双指针，向两边展开
+//         l--;
+//         r++;
+//     }
+//     // after iteration, l & r would be out of bound, l need add one offset back, this is related to substring impl, it's 
+//     // exlusive on right range.
+//     // 返回以 s[l] 和 s[r] 为中心的最长回文串
+//     return s.substring(l + 1, r);
+// }
+//
+//
+
+
+
+// the fucking lession is I should do the palindrome check using center position of the string and expand it outwards
 // So it can be simplely looped from string index from 0 to s.length
 
 
@@ -15,7 +30,7 @@
 //   ^   ^
 
 
-// this implementation is just straight ugly. and the need to implements a custom hash function for tuple stopped from
+// this implementation is just straight ugly. and the need to implements a custom hash function for tuple stopped me from
 // continuing this shit.
 // I keep it here for references usage like 
 // - unordered_map
@@ -24,6 +39,12 @@
 // - string_view
 
 // which I got to say, cpp containers, especially unordered_map is not that easy to use.
+
+
+#include <iostream>
+#include <string_view>
+#include <unordered_map>
+
 
 class Solution {
 public:
