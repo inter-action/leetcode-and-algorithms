@@ -93,3 +93,9 @@ clang-format -i src/~~
 
 ## failed items
 * #5, https://leetcode.cn/problems/longest-palindromic-substring/description/
+* #76, src/sliding-window/n76-minimum-window-substring.cpp
+
+
+## notes
+
+- use `begin != end` to compare all STL containers, hashmap can't using `<` to compare.
