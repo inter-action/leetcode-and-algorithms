@@ -14,9 +14,12 @@ fn pivot<T: PartialOrd + Debug>(v: &mut [T]) -> usize {
     p
 }
 
-fn quick_sort<T>(v: &mut [T]) where T: Debug + PartialOrd {
+fn quick_sort<T>(v: &mut [T])
+where
+    T: Debug + PartialOrd,
+{
     if v.len() <= 1 {
-        return ;
+        return;
     }
 
     let p = pivot(v);
@@ -32,7 +35,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_quick_sort(){
+    fn test_quick_sort() {
         let mut v = vec![2, 4, 3, 1];
         quick_sort(&mut v);
 
