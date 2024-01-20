@@ -10,8 +10,20 @@ clang++ -std=c++17 -g -o -O0 -Wall main n26-remove-duplicates-from-sorted-array.
 ./main
 ```
 
+## Anotation
 
-## how to debug using lldb
+```
+NOTE: // notes
+```
+
+## Debugging
+
+* compiler explorer - https://godbolt.org/
+
+
+* add -v option to clang++ 
+
+### how to debug using lldb
 
 ```shell
 lldb main
@@ -99,3 +111,6 @@ clang-format -i src/~~
 ## notes
 
 - use `begin != end` to compare all STL containers, hashmap can't using `<` to compare.
+- `always delcare a default deconstructor implementation on base class`
+    - https://www.geeksforgeeks.org/difference-between-virtual-function-and-pure-virtual-function-in-c/
+    - src/parsing/n394-decode-string.cpp
