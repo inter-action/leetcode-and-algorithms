@@ -36,6 +36,11 @@ var clumsy = function (n) {
   //if (reversed.length != 1) {
   //  throw new Error("invalid stack state: " + JSON.stringify(reversed));
   //}
+  
+  // for - operator, we can treat it as negative number, then adds all together.
+  // stack [3, '-', 6, '+', 3]
+  //=
+  // stack [3, -6, '+', 3]
   let f = new Function(`return ${stack.join("")}`);
 
   return f();
