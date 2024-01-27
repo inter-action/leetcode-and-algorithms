@@ -11,6 +11,7 @@ var dailyTemperatures = function (temperatures) {
   let head = null;
   let current = null;
 
+  // create link list for result collecting
   for (let i = 0; i < temperatures.length; i++) {
     if (i == 0) {
       head = Node(temperatures[i], i);
