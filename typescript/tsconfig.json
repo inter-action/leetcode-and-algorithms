@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "noEmit": true, // only run test using jest
+    "target": "es2016",
+    "lib": ["ES2016"],
+    "module": "commonjs",
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
