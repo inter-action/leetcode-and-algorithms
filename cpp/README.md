@@ -114,3 +114,56 @@ clang-format -i src/~~
 - `always delcare a default deconstructor implementation on base class`
     - https://www.geeksforgeeks.org/difference-between-virtual-function-and-pure-virtual-function-in-c/
     - src/parsing/n394-decode-string.cpp
+
+
+- stack are very good to handling recursive computation, a good example is leetcode #394
+
+```cpp
+class Solution {
+public:
+    string decodeString(string s) {
+        string res;
+        stack<int> nums;
+        stack<string> strs;
+        int x = 0;
+        for(int i = 0; i < s.size(); i ++){
+            if(s[i] >= '0' && s[i] <= '9')
+                x = x * 10 + s[i] - '0';
+            else if(s[i] >= 'a' && s[i] <= 'z')
+                res += s[i];
+            else if(s[i] == '['){
+                nums.push(x);
+                x = 0;
+                strs.push(res);
+                res = "";
+            }
+            else{
+                int t = nums.top();nums.pop();
+                for(int j = 0; j < t; j ++) strs.top() += res;
+                res = strs.top(); strs.pop();
+            }
+        }
+        return res;
+    }
+};
+
+// input: "3[a4[c]]2[bc]"
+//             ^
+// res=""
+// stack: [3,a,4]
+
+// step: "3[a4[c]]2[bc]"
+//              ^
+// res="a4 '*' c"
+// stack: [3]
+
+// step: "3[a4[c]]2[bc]"
+//               ^
+// res="3 '*' acccc"
+// stack: []
+
+// step: "3[a4[c]]2[bc]"
+//                 ^
+// res=""
+// stack: [3 '*' acccc, 2]
+```
