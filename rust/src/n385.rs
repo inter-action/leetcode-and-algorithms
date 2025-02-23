@@ -37,10 +37,6 @@ impl TokenStream {
     pub fn peek(&mut self) -> Option<char> {
         self.str.chars().nth(self.idx)
     }
-
-    pub fn isEOF(self) -> bool {
-        self.idx == self.str.len()
-    }
 }
 /*
 grammar:
@@ -54,16 +50,16 @@ impl Solution {
 
         if let Some(c) = ts.peek() {
             if c.is_ascii_digit() {
-                Solution::parseNum(&mut ts)
+                Solution::parse_num(&mut ts)
             } else {
-                Solution::parseList(&mut ts)
+                Solution::parse_list(&mut ts)
             }
         } else {
             panic!("invalid ")
         }
     }
 
-    pub fn parseNum(ts: &mut TokenStream) -> NestedInteger {
+    pub fn parse_num(ts: &mut TokenStream) -> NestedInteger {
         let mut i: i32 = 0;
         loop {
             match ts.peek() {
@@ -80,7 +76,7 @@ impl Solution {
         }
     }
 
-    pub fn parseList(ts: &mut TokenStream) -> NestedInteger {
+    pub fn parse_list(ts: &mut TokenStream) -> NestedInteger {
         ts.consume('[').expect("start of list");
         let mut vec: Vec<NestedInteger> = vec![];
 
@@ -89,21 +85,17 @@ impl Solution {
                 Some(c) => {
                     match c {
                         '0'..'9' => {
-                            print!("0{} ", c);
-                            vec.push(Solution::parseNum(ts));
+                            vec.push(Solution::parse_num(ts));
                         }
                         ',' => {
-                            print!("1{} ", c);
                             ts.consume(',');
                             // simply ignore this
                             continue;
                         }
                         '[' => {
-                            print!("2{} ", c);
-                            vec.push(Solution::parseList(ts))
+                            vec.push(Solution::parse_list(ts))
                         }
                         ']' => {
-                            print!("3{} ", c);
                             ts.consume(']').expect("curly braces not match");
                             return NestedInteger::List(vec);
                         }
