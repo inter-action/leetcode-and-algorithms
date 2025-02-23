@@ -112,6 +112,77 @@ impl Solution {
     }
 }
 
+// standard solution
+// impl NestedInteger {
+//     // Constructor for integer
+//     fn new_int(value: i32) -> Self {
+//         NestedInteger::Int(value)
+//     }
+    
+//     // Constructor for empty list
+//     fn new_list() -> Self {
+//         NestedInteger::List(Vec::new())
+//     }
+    
+//     // Add element to list (only valid for List variant)
+//     fn add(&mut self, elem: NestedInteger) {
+//         if let NestedInteger::List(ref mut list) = self {
+//             list.push(elem);
+//         }
+//     }
+// }
+
+// fn deserialize(s: String) -> NestedInteger {
+//     // Handle empty string
+//     if s.is_empty() {
+//         return NestedInteger::new_list();
+//     }
+    
+//     // If no brackets, it's just a number
+//     if !s.starts_with('[') {
+//         return NestedInteger::new_int(s.parse::<i32>().unwrap());
+//     }
+    
+//     let mut stack: Vec<NestedInteger> = Vec::new();
+//     let mut num = 0;
+//     let mut sign = 1;
+//     let chars: Vec<char> = s.chars().collect();
+    
+//     for (i, &c) in chars.iter().enumerate() {
+//         match c {
+//             '[' => {
+//                 stack.push(NestedInteger::new_list());
+//             }
+//             '-' => {
+//                 sign = -1;
+//             }
+//             '0'..='9' => {
+//                 num = num * 10 + (c as i32 - '0' as i32);
+//             }
+//             ',' | ']' => {
+//                 // If previous character was a digit, add the number
+//                 if i > 0 && chars[i-1].is_digit(10) {
+//                     if let Some(top) = stack.last_mut() {
+//                         top.add(NestedInteger::new_int(sign * num));
+//                     }
+//                 }
+//                 // Reset number and sign
+//                 num = 0;
+//                 sign = 1;
+                
+//                 // If closing bracket and multiple levels, complete sublist
+//                 if c == ']' && stack.len() > 1 {
+//                     let completed = stack.pop().unwrap();
+//                     stack.last_mut().unwrap().add(completed);
+//                 }
+//             }
+//             _ => {}
+//         }
+//     }
+    
+//     stack.pop().unwrap()
+// }
+
 #[cfg(test)]
 mod tests {
     use super::*;
