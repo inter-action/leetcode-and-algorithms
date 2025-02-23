@@ -72,7 +72,7 @@ mod tests {
         let s1 = String::from("ab");
         let s2 = String::from("eidbaooo");
 
-        assert_eq!(Solution::check_inclusion(s1, s2), true);
+        assert!(Solution::check_inclusion(s1, s2));
     }
 
     #[test]
@@ -80,6 +80,6 @@ mod tests {
         let s1 = String::from("axb");
         let s2 = String::from("eidbaooo");
 
-        assert_eq!(Solution::check_inclusion(s1, s2), false);
+        assert!(!Solution::check_inclusion(s1, s2));
     }
 }

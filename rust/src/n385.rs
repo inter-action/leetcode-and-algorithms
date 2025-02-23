@@ -19,27 +19,27 @@ impl TokenStream {
     pub fn next(&mut self) -> Option<char> {
         let result = self.str.chars().nth(self.idx);
         self.idx += 1;
-        return result;
+        result
     }
 
     pub fn consume(&mut self, c: char) -> Option<()> {
         let result = self.str.chars().nth(self.idx);
-        return result.and_then(|e| {
+        result.and_then(|e| {
             self.idx += 1;
             if c == e {
                 Some(())
             } else {
                 None
             }
-        });
+        })
     }
 
     pub fn peek(&mut self) -> Option<char> {
-        return self.str.chars().nth(self.idx);
+        self.str.chars().nth(self.idx)
     }
 
     pub fn isEOF(self) -> bool {
-        return self.idx == self.str.len();
+        self.idx == self.str.len()
     }
 }
 /*
@@ -54,9 +54,9 @@ impl Solution {
 
         if let Some(c) = ts.peek() {
             if c.is_ascii_digit() {
-                return Solution::parseNum(&mut ts);
+                Solution::parseNum(&mut ts)
             } else {
-                return Solution::parseList(&mut ts);
+                Solution::parseList(&mut ts)
             }
         } else {
             panic!("invalid ")
@@ -67,7 +67,7 @@ impl Solution {
         let mut i: i32 = 0;
         loop {
             match ts.peek() {
-                Some(c) if c.is_digit(10) => {
+                Some(c) if c.is_ascii_digit() => {
                     ts.consume(c);
                     i = i * 10 + c.to_digit(10).map(|e| e as i32).unwrap()
                 }
