@@ -16,6 +16,7 @@ impl TokenStream {
         TokenStream { idx: 0, str: s }
     }
 
+    #[allow(dead_code)]
     pub fn next(&mut self) -> Option<char> {
         let result = self.str.chars().nth(self.idx);
         self.idx += 1;
