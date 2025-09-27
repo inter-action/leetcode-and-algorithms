@@ -6,7 +6,7 @@
 
 ```shell
 cd src
-clang++ -std=c++17 -g -o -O0 -Wall main n26-remove-duplicates-from-sorted-array.cpp
+clang++ -std=c++17 -g -O0 -Wall n19-remove-nth-node-from-end-of-list.cpp -o main
 ./main
 ```
 
