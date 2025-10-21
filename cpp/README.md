@@ -2,12 +2,11 @@
 
 ## how to run
 
-`cd src` directory
-
 ```shell
-cd src
-clang++ -std=c++17 -g -O0 -Wall n19-remove-nth-node-from-end-of-list.cpp -o main
-./main
+make [compile] FILE=src/n19-remove-nth-node-from-end-of-list.cpp
+make run FILE=src/n19-remove-nth-node-from-end-of-list.cpp
+
+make fmt
 ```
 
 ## Anotation
