@@ -6,7 +6,8 @@ SOURCE = $(shell fd -t f -e cpp)
 
 
 .PHONY: compile run fmt
-compile: dist
+compile:
+	mkdir -p $(dir $(call compile_tpl,$(FILE))) # make sure dist dir exist
 	clang++ $(call compile_tpl,$(FILE))
 
 run:
@@ -16,5 +17,3 @@ fmt:
 	echo "ready to fmt"
 	clang-format -i $(SOURCE)
 
-dist:
-	mkdir -p dist
