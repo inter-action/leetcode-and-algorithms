@@ -8,6 +8,14 @@
 #include <ostream>
 #include <vector>
 
+// [15, -2, 2, -8, 1, 7, 10]
+//  ----Pa----
+//              -----Pb----
+// Pa: Prefix Sum of a range
+// Pb: Prefix Sum of b range
+// Pa = Pa + Pb if Pb == 0
+// so the result would be to calc Max Span of all the Pb
+// AND the reason to use prefix sum is because we alreay try to calc a sum in Pb
 int maxLength(std::vector<int>& arr)
 {
     if (!arr.size())
