@@ -1,5 +1,8 @@
+# src file path to dist file path
 file_to_dist = dist/$(subst .cpp,,$(subst src/,,$1))
+# compile command arguments
 compile_tpl = -std=c++17 -Wall -Wextra -O0 -fsanitize=address -g $(1) -o $(call file_to_dist,$(1))
+# default file path
 FILE ?= src/n19-remove-nth-node-from-end-of-list.cpp
 
 SOURCE = $(shell fd -t f -e cpp)
@@ -9,7 +12,7 @@ SOURCE = $(shell fd -t f -e cpp)
 all: compile run
 
 compile:
-	mkdir -p $(dir $(call compile_tpl,$(FILE))) # make sure dist dir exist
+	mkdir -p $(dir $(call file_to_dist,$(FILE))) # make sure dist dir exist
 	clang++ $(call compile_tpl,$(FILE))
 
 run:
