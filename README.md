@@ -1,5 +1,12 @@
 
-this repo mirror my leetcode solutions - https://leetcode.cn/u/lightning-strike/
+data structure and exercises in leetcode and geekforgeek
+
+## tools when solving
+* https://excalidraw.com/
+
+## links
+* https://leetcode.cn/u/lightning-strike/
+
 
 
 * nested structure can be handled using `stack`
