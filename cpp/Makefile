@@ -5,7 +5,9 @@ FILE ?= src/n19-remove-nth-node-from-end-of-list.cpp
 SOURCE = $(shell fd -t f -e cpp)
 
 
-.PHONY: compile run fmt
+.PHONY: all compile run fmt
+all: compile run
+
 compile:
 	mkdir -p $(dir $(call compile_tpl,$(FILE))) # make sure dist dir exist
 	clang++ $(call compile_tpl,$(FILE))

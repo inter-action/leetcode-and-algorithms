@@ -1,26 +1,24 @@
 #include <iostream>
-#include <set>
+#include <limits.h>
 #include <map>
 #include <optional>
-#include <limits.h>
-
-
+#include <set>
 
 class Solution {
 public:
-    bool checkInclusion(std::string s1, std::string s2) {
-        std::map<char, int> expected{};
-        std::map<char, int> window{};
+    bool checkInclusion(std::string s1, std::string s2)
+    {
+        std::map<char, int> expected {};
+        std::map<char, int> window {};
 
-        for (auto& c: s1) {
-           // if (!expected.count(c)) {
-           //     expected[c] = 0;
-           // }
-           expected[c]++;
+        for (auto& c : s1) {
+            // if (!expected.count(c)) {
+            //     expected[c] = 0;
+            // }
+            expected[c]++;
         }
 
-
-        std::string_view view{s2};
+        std::string_view view { s2 };
 
         int l = 0;
         int r = 0;
@@ -84,7 +82,6 @@ int main()
 
     auto result = solution.checkInclusion(s1, s2);
     std::cout << "the result is: " << result << std::endl;
-
 
     s2 = "eidboaoo";
     //    01234567

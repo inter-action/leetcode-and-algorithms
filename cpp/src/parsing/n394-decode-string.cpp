@@ -27,12 +27,10 @@ public:
     {
     }
 
-
     std::string ToString() const override
     {
         return s_;
     }
-
 
 private:
     std::string s_;
@@ -71,7 +69,6 @@ private:
     int32_t repeat_;
     std::vector<Product*> children_ = {};
 };
-
 
 class Solution {
 public:

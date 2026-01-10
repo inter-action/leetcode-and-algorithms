@@ -3,7 +3,7 @@
 
 // other interesting implementations:
 // - https://leetcode.cn/problems/html-entity-parser/solutions/2477551/html-shi-ti-jie-xi-qi-by-leetcode-soluti-y851/comments/2179704
-// - 
+// -
 class Solution {
 public:
     std::string entityParser(std::string text)

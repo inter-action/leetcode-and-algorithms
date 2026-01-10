@@ -133,14 +133,15 @@ public:
         EOD_S,
     };
 
-    std::tuple<TokenType, std::variant<char, int>> Peek() {
+    std::tuple<TokenType, std::variant<char, int>> Peek()
+    {
         throw std::runtime_error("unimplemented");
     }
 
     std::tuple<TokenType, std::variant<char, int>> NextToken()
     {
 
-        auto is_num = [](auto c){
+        auto is_num = [](auto c) {
             return c >= '0' && c <= '9';
         };
 
@@ -150,12 +151,12 @@ public:
                 return std::tuple(TokenType::OPEN_BRACKET, '[');
             }
 
-            if (*it_ == ']'){
+            if (*it_ == ']') {
                 it_++;
                 return std::tuple(TokenType::END_BRACKET, ']');
             }
 
-            if (is_num(*it_) || (*it_ == '-' && is_num(*(it_+1)))) {
+            if (is_num(*it_) || (*it_ == '-' && is_num(*(it_ + 1)))) {
                 int nums = 0;
                 bool is_neg = false;
                 if (*it_ == '-') {
@@ -311,5 +312,6 @@ int main()
     std::string in = "-1";
     auto result = solution.deserialize(in);
 
-    std::cout << "result is : \n" << result << std::endl;
+    std::cout << "result is : \n"
+              << result << std::endl;
 }

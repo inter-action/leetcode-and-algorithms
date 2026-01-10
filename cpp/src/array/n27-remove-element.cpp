@@ -1,12 +1,10 @@
 
 #include <iostream>
 
-
 // NOTES:
 // the most efficient approach on leetcode is leveraging `erase` api, but it feel like cheating :(
 
 // nums.erase(nums.begin()+i);
-
 
 // the key is to swap duplicated value with unique one.
 class Solution {

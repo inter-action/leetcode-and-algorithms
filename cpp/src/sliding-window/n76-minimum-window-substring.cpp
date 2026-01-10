@@ -1,28 +1,26 @@
 // !! this code doesn't work, FAILED ATTEMPT!
 
-
 #include <iostream>
-#include <set>
+#include <limits.h>
 #include <map>
 #include <optional>
-#include <limits.h>
-
+#include <set>
 
 class Solution {
 public:
-    std::string minWindow(std::string s, std::string t) {
-        std::map<char, int> tset{};
+    std::string minWindow(std::string s, std::string t)
+    {
+        std::map<char, int> tset {};
 
-        for (auto& c: t) {
-           if (!tset.count(c)) {
-               tset[c] = 0;
-           }
-           tset[c]++;
+        for (auto& c : t) {
+            if (!tset.count(c)) {
+                tset[c] = 0;
+            }
+            tset[c]++;
         }
 
-
-        auto scan = [&](std::string_view view) ->std::optional<std::map<char, std::vector<int>>> {
-            std::map<char, std::vector<int>> map{};
+        auto scan = [&](std::string_view view) -> std::optional<std::map<char, std::vector<int>>> {
+            std::map<char, std::vector<int>> map {};
             auto it = view.cbegin();
             auto end = view.cend();
 
@@ -46,7 +44,7 @@ public:
                 return std::nullopt;
             }
 
-            for (auto& it: tset) {
+            for (auto& it : tset) {
                 if (map[it.first].size() < tset[it.first]) {
                     return std::nullopt;
                 }
@@ -55,17 +53,19 @@ public:
             return map;
         };
 
-        if (!s.size()) return "";
-        if (!t.size()) return "";
+        if (!s.size())
+            return "";
+        if (!t.size())
+            return "";
 
-        std::string_view view{s};
+        std::string_view view { s };
 
         size_t l = 0;
         size_t r = s.size();
 
         auto max = [](std::vector<int>& vec) {
             int m = vec[0];
-            for (auto i = 1; i<vec.size(); i++) {
+            for (auto i = 1; i < vec.size(); i++) {
                 if (vec[i] > m) {
                     m = vec[i];
                 }
@@ -76,7 +76,7 @@ public:
 
         auto min = [](std::vector<int>& vec) {
             int m = vec[0];
-            for (auto i = 1; i<vec.size(); i++) {
+            for (auto i = 1; i < vec.size(); i++) {
                 if (vec[i] < m) {
                     m = vec[i];
                 }
@@ -85,7 +85,7 @@ public:
             return m;
         };
 
-        while(true) {
+        while (true) {
             view = view.substr(l, r);
             auto result = scan(view);
             if (!result.has_value()) {
@@ -98,7 +98,7 @@ public:
             auto map_idx = 0;
             auto map_size = map.size();
             // hash map can't use <
-            for (auto& map_it: map) {
+            for (auto& map_it : map) {
                 if (map_idx >= map_size) {
                     break;
                 }
@@ -123,25 +123,25 @@ public:
                 auto left_distance = 0;
                 auto right_distance = 0;
 
-                for (auto& map_it: map) {
+                for (auto& map_it : map) {
                     auto& key = map_it.first;
                     auto& values = map_it.second;
 
-                    for (auto i = 0; i<values.size(); i++) {
+                    for (auto i = 0; i < values.size(); i++) {
                         if (i == tset[key]) {
                             break;
                         }
                         left_distance += (values[i] - min_i);
                     }
 
-                    for (auto i = 0; i<values.size(); i++) {
+                    for (auto i = 0; i < values.size(); i++) {
                         if (i == tset[key]) {
                             break;
                         }
                         right_distance += (max_i - values[values.size() - 1 - i]);
                     }
                 }
-                if ( left_distance > right_distance ) {
+                if (left_distance > right_distance) {
                     l = min_i + 1;
                 } else {
                     r = max_i;
@@ -161,8 +161,9 @@ public:
 
             min_i = INT_MAX;
             max_i = 0;
-            for (auto& map_it: map) {
-                if (map_it.second.size() == 0) continue;
+            for (auto& map_it : map) {
+                if (map_it.second.size() == 0)
+                    continue;
 
                 auto k = min(map_it.second);
                 if (k < min_i) {
@@ -173,10 +174,8 @@ public:
                     max_i = j;
                 }
             }
-            return std::string{view.substr(min_i, max_i - min_i + 1)};
+            return std::string { view.substr(min_i, max_i - min_i + 1) };
         }
-        
-
     }
 };
 
@@ -192,8 +191,6 @@ int main()
     std::cout << "the result is: " << result << std::endl;
     // expected:
     // BANC
-
-
 
     // in = "a";
     // t = "a";
