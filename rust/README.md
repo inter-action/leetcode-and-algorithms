@@ -1,9 +1,11 @@
 
+- each file is isolated
+
 ## how to run
 
 ```
-make lint
-make test
+make run_test FILE=src/main.rs
+make run_main FILE=src/main.rs
 make fmt
 ```
 
