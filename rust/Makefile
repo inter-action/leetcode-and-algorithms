@@ -1,12 +1,24 @@
+# src file path to dist file path
+file_to_dist = dist/$(subst .rs,,$(subst src/,,$1))
+# compile command arguments
+compile_tpl = -g -o dist/bin $1
+# default file path
+FILE ?= src/main.rs
 
-all: test
+SOURCE = $(shell fd -t f -e rs)
 
-test:
-	cargo test
 
-lint:
-	cargo clippy
+.PHONY: all compile run fmt
+all: compile run
 
+compile:
+	mkdir -p dist
+	@# mkdir -p $(dir $(call file_to_dist,$(FILE))) # make sure dist dir exist
+	rustc $(call compile_tpl,$(FILE))
+
+run:
+	./dist/bin
 
 fmt:
-	cargo fmt
+	echo "ready to fmt"
+	rustfmt $(SOURCE)

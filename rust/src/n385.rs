@@ -93,9 +93,7 @@ impl Solution {
                             // simply ignore this
                             continue;
                         }
-                        '[' => {
-                            vec.push(Solution::parse_list(ts))
-                        }
+                        '[' => vec.push(Solution::parse_list(ts)),
                         ']' => {
                             ts.consume(']').expect("curly braces not match");
                             return NestedInteger::List(vec);
@@ -119,12 +117,12 @@ impl Solution {
 //     fn new_int(value: i32) -> Self {
 //         NestedInteger::Int(value)
 //     }
-    
+
 //     // Constructor for empty list
 //     fn new_list() -> Self {
 //         NestedInteger::List(Vec::new())
 //     }
-    
+
 //     // Add element to list (only valid for List variant)
 //     fn add(&mut self, elem: NestedInteger) {
 //         if let NestedInteger::List(ref mut list) = self {
@@ -138,17 +136,17 @@ impl Solution {
 //     if s.is_empty() {
 //         return NestedInteger::new_list();
 //     }
-    
+
 //     // If no brackets, it's just a number
 //     if !s.starts_with('[') {
 //         return NestedInteger::new_int(s.parse::<i32>().unwrap());
 //     }
-    
+
 //     let mut stack: Vec<NestedInteger> = Vec::new();
 //     let mut num = 0;
 //     let mut sign = 1;
 //     let chars: Vec<char> = s.chars().collect();
-    
+
 //     for (i, &c) in chars.iter().enumerate() {
 //         match c {
 //             '[' => {
@@ -170,7 +168,7 @@ impl Solution {
 //                 // Reset number and sign
 //                 num = 0;
 //                 sign = 1;
-                
+
 //                 // If closing bracket and multiple levels, complete sublist
 //                 if c == ']' && stack.len() > 1 {
 //                     let completed = stack.pop().unwrap();
@@ -180,7 +178,7 @@ impl Solution {
 //             _ => {}
 //         }
 //     }
-    
+
 //     stack.pop().unwrap()
 // }
 
@@ -191,7 +189,6 @@ mod tests {
     #[test]
     fn test_a() {
         let s = "[123,[456,[789]]]";
-
         assert_eq!(
             Solution::deserialize(s.into()),
             NestedInteger::List(vec![
