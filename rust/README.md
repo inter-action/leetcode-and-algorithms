@@ -1,5 +1,6 @@
 
 - each file is isolated
+- never install 3rd dependencies, used only for leetcode quiz
 
 ## how to run
 
