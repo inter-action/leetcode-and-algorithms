@@ -27,4 +27,5 @@ run_test:
 
 fmt:
 	echo "ready to fmt"
-	rustfmt $(SOURCE)
+	@# rustfmt $(SOURCE)
+	@rustfmt **/*.rs
