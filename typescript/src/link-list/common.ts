@@ -11,6 +11,8 @@ export class ListNode {
 
     let cur: Nullable<ListNode> = head;
     let res = [];
+    cur = 3;
+    let a = 4;
 
     while (cur) {
       res.push(cur.val);
