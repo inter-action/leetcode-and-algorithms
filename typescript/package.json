@@ -1,14 +1,16 @@
 {
   "name": "typescript-leetcode",
   "private": true,
+  "type": "module",
   "scripts": {
     "compile": "tsc",
     "fmt": "prettier -w src",
-    "test": "node --test"
+    "test": "node --import=tsx --test"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
     "prettier": "^3.3.2",
-    "typescript": "^5.4.5"
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
   }
 }
