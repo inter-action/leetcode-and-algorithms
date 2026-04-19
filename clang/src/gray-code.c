@@ -1,6 +1,8 @@
-/**
- * Note: The returned array must be malloced, assume caller calls free().
- */
+// the only hard part of this quiz is the formula: i^(i >> 1)
+//
+//
+// https://leetcode.cn/problems/gray-code/?envType=problem-list-v2&envId=bit-manipulation
+//
 #include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>

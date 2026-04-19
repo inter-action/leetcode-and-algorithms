@@ -1,6 +1,22 @@
 
 data structure and exercises in leetcode and geekforgeek
 
+## progress
+- https://leetcode.cn/studyplan/top-100-liked/
+
+
+
+```text
+# find mid  point
+mid = (l + r) / 2
+    l + (r-l)/2 => 2l/2 + (r-l)/2 => (r+l)/2
+
+#
+
+
+```
+
+
 ## tools when solving
 * https://excalidraw.com/
 
