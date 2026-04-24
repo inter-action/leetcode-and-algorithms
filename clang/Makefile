@@ -2,7 +2,7 @@
 file_to_dist = dist/$(subst .cpp,,$(subst src/,,$1))
 # compile command arguments
 # compile_tpl = -std=c17 -Wall -Wextra -O0 -fsanitize=address -g $(1) -o $(call file_to_dist,$(1))
-compile_tpl = -std=c17 -Wall -Wextra -O0 -g src/utils.c $(1) -o dist/main
+compile_tpl = -std=c17 -Wall -Wextra -O0 -g $$(pkg-config --cflags cunit) $$(pkg-config --libs cunit) src/utils/utils.c $(1) -o dist/main
 # default file path
 FILE ?= src/hello.c
 

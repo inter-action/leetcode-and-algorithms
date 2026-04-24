@@ -3,7 +3,7 @@
 //
 // https://leetcode.cn/problems/gray-code/?envType=problem-list-v2&envId=bit-manipulation
 //
-#include "utils.h"
+#include "utils/utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 
