@@ -1,8 +1,10 @@
 #ifndef UTILS_UTILS
 #define UTILS_UTILS
 
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 #define print_format(x) _Generic((x), \
     int: "%d",                        \
@@ -34,5 +36,30 @@ void printIntArray(int arr[], int length);
 // ------ hash map
 
 uint64_t fnv_1(const uint8_t* chars, size_t size);
+
+typedef struct {
+    const void* bytes;
+    const size_t bytes_size;
+} BytesRange;
+
+typedef struct {
+    uint64_t (*hash_func)(const void* self);
+    bool (*compare)(const void* self, const void* other);
+    uint64_t hash;
+    const BytesRange key;
+    const BytesRange value;
+} HashMap_Record;
+
+typedef struct {
+    HashMap_Record* mem;
+    size_t size;
+    size_t capacity;
+    size_t element_size;
+} HashMap;
+
+size_t HashMap_probe(HashMap* self, size_t start, uint64_t target_hash);
+void HashMap_ensure_size(HashMap* self);
+void HashMap_set(HashMap* self, HashMap_Record record);
+void HashMap_get(HashMap* self, HashMap_Record key, HashMap_Record* result);
 
 #endif // !UTILS
